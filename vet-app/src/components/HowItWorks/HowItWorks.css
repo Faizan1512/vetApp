@@ -1,0 +1,221 @@
+.hiw {
+  position: relative;
+  padding: var(--section-pad) 0;
+  overflow: hidden;
+}
+
+.hiw__bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(61,184,119,0.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(212,160,23,0.04) 0%, transparent 50%);
+}
+
+.hiw__header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.hiw__title {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 800;
+  color: var(--forest);
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+
+.hiw__title em {
+  font-style: italic;
+  color: var(--emerald);
+}
+
+.hiw__subtitle {
+  font-size: 17px;
+  color: rgba(13,40,24,0.6);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* ─── Steps layout ─────────────────────── */
+.hiw__steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+  margin-bottom: 48px;
+  align-items: start;
+}
+
+.hiw__step {
+  position: relative;
+  padding: 0 16px;
+}
+
+/* ─── Connector ────────────────────────── */
+.hiw__connector {
+  position: absolute;
+  top: 80px;
+  right: -30px;
+  width: 60px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hiw__connector svg {
+  width: 100%;
+  height: auto;
+}
+
+.hiw__connector-arrow {
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 8px solid rgba(212,160,23,0.5);
+}
+
+/* ─── Step Card ────────────────────────── */
+.hiw__card {
+  background: #fff;
+  border: 1px solid rgba(13,40,24,0.07);
+  border-radius: 24px;
+  padding: 32px 24px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s var(--ease-spring), box-shadow 0.35s;
+  cursor: default;
+  height: 100%;
+}
+
+.hiw__card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.hiw__card-accent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--step-color, var(--emerald));
+  opacity: 0.6;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease-expo);
+}
+
+.hiw__card:hover .hiw__card-accent {
+  transform: scaleX(1);
+}
+
+.hiw__num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--step-color, var(--emerald));
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+  opacity: 0.8;
+}
+
+.hiw__icon-wrap {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 20px;
+}
+
+.hiw__icon {
+  font-size: 32px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(var(--step-color), 0.06);
+  border-radius: 16px;
+  transition: transform 0.3s var(--ease-spring);
+}
+
+.hiw__card:hover .hiw__icon {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.hiw__icon-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 20px;
+  border: 1.5px dashed var(--step-color, var(--emerald));
+  opacity: 0.25;
+  transition: opacity 0.3s;
+}
+
+.hiw__card:hover .hiw__icon-ring {
+  opacity: 0.5;
+}
+
+.hiw__card-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.hiw__card-desc {
+  font-size: 14px;
+  color: rgba(13,40,24,0.6);
+  line-height: 1.65;
+}
+
+/* ─── Bottom card ──────────────────────── */
+.hiw__bottom-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 32px;
+  border-radius: 20px;
+}
+
+.hiw__bottom-icon {
+  font-size: 36px;
+  flex-shrink: 0;
+}
+
+.hiw__bottom-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 4px;
+}
+
+.hiw__bottom-sub {
+  font-size: 13px;
+  color: rgba(13,40,24,0.55);
+}
+
+/* ─── Responsive ───────────────────────── */
+@media (max-width: 960px) {
+  .hiw__steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .hiw__connector { display: none; }
+  .hiw__step { padding: 0; }
+}
+
+@media (max-width: 560px) {
+  .hiw__steps { grid-template-columns: 1fr; }
+  .hiw__bottom-card { flex-direction: column; text-align: center; }
+  .hiw__bottom-card .btn-primary { margin-left: 0 !important; }
+}

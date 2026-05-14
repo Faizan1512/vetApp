@@ -1,0 +1,36 @@
+.footer {
+  background: #081c18;
+  padding: 50px 0;
+  color: #ccc;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.footer h3,
+.footer h4 {
+  color: #fff;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer li {
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.footer li:hover {
+  color: var(--emerald);
+}
+
+@media (max-width: 700px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
